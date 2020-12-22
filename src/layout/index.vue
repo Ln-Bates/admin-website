@@ -3,7 +3,7 @@
         <el-header>Header</el-header>
         <el-container>
             <el-aside width="200px">
-                <menu-container :routes="routes"></menu-container>
+                <menu-container />
             </el-aside>
             <el-main>
                 <router-view />
@@ -13,21 +13,12 @@
 </template>
 
 <script>
-    import { children } from '@/router/routes';
+
     import MenuContainer from './menu-container';
-    console.log(children)
     export default {
         components: {
             MenuContainer
         },
-        data() {
-            return {
-                routes: []
-            }
-        },
-        mounted() {
-
-        }
     }
 </script>
 
