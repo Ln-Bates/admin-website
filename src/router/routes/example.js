@@ -1,5 +1,5 @@
-const Example1 = () => import(/* webpackChunkName: "modules/layout/index" */ '@/views/example/example-1.vue');
-const Example2 = () => import(/* webpackChunkName: "modules/layout/index" */ '@/views/example/example-2.vue');
+const Example1 = () => import(/* webpackChunkName: "modules/views/example/example-1" */ 'views/example/example-1.vue');
+const Example2 = () => import(/* webpackChunkName: "modules/views/example/example-2" */ 'views/example/example-2.vue');
 export default [
     {
         path: '/example1',

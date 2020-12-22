@@ -18,5 +18,6 @@ module.exports = {
             .set('apis', resolve('src/apis'))
             .set('components', resolve('src/components'))
             .set('utils', resolve('src/utils'))
+            .set('views', resolve('src/views'))
     },
 }
