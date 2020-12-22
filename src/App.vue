@@ -10,6 +10,9 @@
 </script>
 
 <style lang="scss">
+    h1 {
+        color: $color;
+    }
     * {
         padding: 0;
         margin: 0;
