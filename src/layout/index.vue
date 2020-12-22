@@ -1,7 +1,7 @@
 <template>
-    <el-container class="container">
+    <el-container class="outer-container">
         <el-header>Header</el-header>
-        <el-container>
+        <el-container class="inner-container">
             <el-aside width="200px">
                 <menu-container />
             </el-aside>
@@ -23,8 +23,11 @@
 </script>
 
 <style>
-    .container {
+    .outer-container {
         height: 100%;
+    }
+    .inner-container {
+        height: calc(100% - 60px);
     }
     .el-header,
     .el-footer {
@@ -40,9 +43,8 @@
     }
 
     .el-main {
+        padding: 0;
         background-color: #e9eef3;
         color: #333;
-        text-align: center;
-        line-height: 160px;
     }
 </style>

@@ -1,6 +1,9 @@
 <template>
     <div>
-        <h1>example - 2</h1>
+        <h1>
+            全局注入的scss变量
+            全局变量写再styles/_variable.scss里
+        </h1>
     </div>
 </template>
 

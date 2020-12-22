@@ -4,8 +4,12 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import '@/styles/reset.css';
-Vue.use(ElementUI);
+import '@/styles/reset.css';
+import '@/styles/scroll-bar.scss';
+// 注入全局组件
+import './components';
+
+Vue.use(ElementUI, { size: 'mini' });
 
 Vue.config.productionTip = false
 
