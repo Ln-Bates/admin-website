@@ -1,13 +1,24 @@
 <template>
-  <h1>tab</h1>
+  <el-radio-group v-model="radio" class="tabs">
+    <el-radio-button label="1">全部</el-radio-button>
+    <el-radio-button label="2">上架</el-radio-button>
+    <el-radio-button label="3">下架</el-radio-button>
+  </el-radio-group>
 </template>
 
 <script>
   export default {
-    name: 'tabs'
+    name: 'tabs',
+    data() {
+      return {
+        radio: '1'
+      };
+    },
   };
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  .tabs {
+    margin-right: $inner-size;
+  }
 </style>

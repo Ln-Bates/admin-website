@@ -5,6 +5,7 @@
       <filters/>
       <div class="btn-group component-container">
         <div class="left">
+          <tabs/>
           <slot name="slot-left"/>
         </div>
         <div class="right">
@@ -25,12 +26,14 @@
 
 <script>
   import Filters from '../filters/index';
+  import Tabs from '../tabs/index';
   import DataTable from '../data-table/index';
   import Pagination from '../pagination/index';
 
   export default {
     components: {
       Filters,
+      Tabs,
       DataTable,
       Pagination
     },
