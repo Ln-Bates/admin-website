@@ -19,5 +19,8 @@ module.exports = {
             .set('components', resolve('src/components'))
             .set('utils', resolve('src/utils'))
             .set('views', resolve('src/views'))
+            .set('mixins', resolve('src/resources/mixins'))
+            .set('plugins', resolve('src/resources/plugins'))
+            .set('directives', resolve('src/resources/directives'))
     },
 }

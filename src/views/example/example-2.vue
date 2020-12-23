@@ -26,6 +26,24 @@
                     仅修改样式 不进行路由跳转
                 </div>
             </el-collapse-item>
+            <el-collapse-item title="输入框整数及浮点"
+                              name="4">
+                <div>
+                    <p>整数</p>
+                    <el-input v-model="int"
+                              style="width: 400px;"
+                              v-input:int></el-input>
+                </div>
+                <div>
+                    <p>浮点数</p>
+                    <el-input v-model="float"
+                              style="width: 400px;"
+                              v-input:float></el-input>
+                </div>
+                <div>
+                    仅修改样式 不进行路由跳转
+                </div>
+            </el-collapse-item>
         </el-collapse>
     </simple-view>
 </template>
@@ -34,7 +52,9 @@
     export default {
         data() {
             return {
-                activeName: ''
+                activeName: '',
+                int: '',
+                float: '',
             };
         },
         methods: {

@@ -9,7 +9,8 @@ import '@/styles/scroll-bar.scss';
 // 注入全局组件
 import './components';
 // 注入全局插件
-import './plugins';
+import 'plugins';
+import 'directives';
 
 Vue.use(ElementUI, { size: 'mini' });
 
