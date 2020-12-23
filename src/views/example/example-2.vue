@@ -14,6 +14,18 @@
                 <el-button type="primary"
                            @click="confirmTest('保存')">confirm通过按钮文本更改</el-button>
             </el-collapse-item>
+            <el-collapse-item title="修改菜单高亮定位"
+                              name="3">
+                <div>
+                    <el-button type="primary"
+                               @click="changeRouteHighlight('1')">exapmle - 1</el-button>
+                    <el-button type="primary"
+                               @click="changeRouteHighlight('2')">exapmle - 2</el-button>
+                </div>
+                <div>
+                    仅修改样式 不进行路由跳转
+                </div>
+            </el-collapse-item>
         </el-collapse>
     </simple-view>
 </template>
@@ -30,6 +42,9 @@
                 this.elConfirm('confirm内容测试', text).then(() => {
                     this.$message.success('进行后续操作');
                 });
+            },
+            changeRouteHighlight(type) {
+                this.$eventBus.$emit('changeActive', `/example${type}`);
             }
         }
     }

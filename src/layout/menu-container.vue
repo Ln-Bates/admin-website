@@ -14,13 +14,14 @@
         },
         data() {
             return {
-                routes: children
+                routes: children,
+                defaultActive: children[0].path
             }
         },
-        computed: {
-            defaultActive() {
-                return children[0].path;
-            }
+        mounted() {
+            this.$eventBus.$on('changeActive', path => {
+                this.defaultActive = path;
+            });
         }
     }
 </script>

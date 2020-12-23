@@ -14,6 +14,8 @@ import './plugins';
 Vue.use(ElementUI, { size: 'mini' });
 
 Vue.config.productionTip = false
+Vue.config.devtools = true;
+Vue.prototype.$eventBus = new Vue();
 
 new Vue({
   router,
