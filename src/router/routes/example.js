@@ -5,37 +5,37 @@ const Example3 = () => import(/* webpackChunkName: "modules/views/example/exampl
 
 export default [
   {
-    path: '/example1',
-    name: 'example1',
-    component: Example1,
-    meta: {
-      title: '测试页面 - 1'
-    }
-  },
-  {
-    path: '/example2',
-    name: 'example2',
+    path: '/example',
+    name: 'example',
     component: RouterContainer,
     meta: {
-      title: '测试页面 - 2'
+      title: '示例'
     },
     children: [
       {
         path: '',
-        name: 'example3',
+        name: 'example-1',
         component: Example2,
         meta: {
-          title: '测试页面 - 3'
+          title: '部分功能'
         }
       },
       {
-        path: 'example3',
-        name: 'example3',
+        path: 'view-simple',
+        name: 'view-simple',
+        component: Example1,
+        meta: {
+          title: '视图组件 - 空'
+        }
+      },
+      {
+        path: 'view-table',
+        name: 'view-table',
         component: Example3,
         meta: {
-          title: '测试页面 - 3'
+          title: '视图组件 - 表格'
         }
-      }
+      },
     ]
   }
 ];

@@ -1,14 +1,10 @@
 import Vue from 'vue';
 
 const components = [
-    { name: 'SimpleView', component: () => import('./simple-view/index.vue') },
+  {name: 'SimpleView', component: () => import('./simple-view/index.vue')},
+  {name: 'TableView', component: () => import('./table-view/index.vue')},
 ];
 
-const useComponents = () => {
-    components.forEach(item => {
-        return Vue.component(item.name, item.component)
-    })
-}
+components.forEach(item => Vue.component(item.name, item.component));
 
-Vue.use(useComponents);
 export default components;

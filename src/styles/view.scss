@@ -1,0 +1,35 @@
+.view-container {
+  position: relative;
+  box-sizing: border-box;
+  padding: $inner-size;
+  height: 100%;
+  max-height: 100%;
+
+  .content-container {
+    overflow: auto;
+    height: 100%;
+
+    &.has-footer {
+      height: calc(100% - 45px);
+    }
+  }
+
+  .component-container {
+    padding: $inner-size;
+    background: #fff;
+    border-radius: $radius;
+    margin-bottom: $inner-size;
+  }
+
+  .footer-bar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    left: 15px;
+    height: 60px;
+    text-align: center;
+    // background: #ccc;
+  }
+}

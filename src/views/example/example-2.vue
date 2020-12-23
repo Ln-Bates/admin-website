@@ -72,8 +72,8 @@
       },
       changeRouteHighlight(type) {
         const routesMap = {
-          '1': '/example1',
-          '2': '/example2/'
+          '1': '/example/view-simple',
+          '2': '/example/view-table'
         };
         this.$eventBus.$emit('changeActive', routesMap[type]);
       },
