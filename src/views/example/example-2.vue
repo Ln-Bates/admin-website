@@ -40,9 +40,11 @@
                               style="width: 400px;"
                               v-input:float></el-input>
                 </div>
-                <div>
-                    仅修改样式 不进行路由跳转
-                </div>
+            </el-collapse-item>
+            <el-collapse-item title="防抖指令（ 有问题 ）"
+                              name="5">
+                <el-button type="primary"
+                           v-click="debounce">防抖测试</el-button>
             </el-collapse-item>
         </el-collapse>
     </simple-view>
@@ -65,6 +67,9 @@
             },
             changeRouteHighlight(type) {
                 this.$eventBus.$emit('changeActive', `/example${type}`);
+            },
+            debounce() {
+                console.log(123);
             }
         }
     }

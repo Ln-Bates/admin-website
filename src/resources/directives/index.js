@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import input from './input';
+import click from './click';
 
 const directives = [
-    input
+    input, click
 ]
 
 directives.forEach(item => {
