@@ -3,9 +3,9 @@ import input from './input';
 import click from './click';
 
 const directives = [
-    input, click
-]
+  input, click
+];
 
 directives.forEach(item => {
-    Vue.directive(item.name, item.directive);
-})
+  Vue.directive(item.name, item.directive);
+});
