@@ -2,7 +2,10 @@
   <div class="table-view view-container">
     <div class="content-container"
          :class="{'has-footer': hasFooter}">
-      <filters/>
+      <!-- 过滤 -->
+      <filters :filters="filters" v-model="model.filter"/>
+      <!-- 过滤 -->
+      <!-- 按钮组 -->
       <div class="btn-group component-container">
         <div class="left">
           <tabs/>
@@ -12,7 +15,10 @@
           <slot name="slot-right"/>
         </div>
       </div>
+      <!-- 按钮组 -->
+      <!-- 表格 -->
       <data-table :table-data="tableData" :table-options="tableOptions"/>
+      <!-- 表格 -->
     </div>
     <div class="footer-bar"
          v-if="hasFooter">
@@ -56,6 +62,17 @@
           };
         }
       },
+    },
+    data() {
+      return {
+        filters: [
+          {type: 'input', label: '姓名', prop: 'name'},
+          {type: 'input', label: '类型', prop: 'type'},
+        ],
+        model: {
+          filter: {}
+        }
+      };
     },
     computed: {
       hasFooter() {

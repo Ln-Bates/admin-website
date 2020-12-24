@@ -2,24 +2,9 @@
   <div class="filters component-container">
     <el-form>
       <el-row class="row">
-        <el-col :span="12">
-          <el-form-item label="姓名：">
-            <el-input></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="姓名：">
-            <el-input></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="姓名：">
-            <el-input></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="姓名：">
-            <el-input></el-input>
+        <el-col :span="8" v-for="item in filters" :key="item.prop">
+          <el-form-item :label="`${item.label}：`">
+            <el-input v-model="val[item.prop]"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -28,14 +13,25 @@
 </template>
 
 <script>
+  import TwoWay from 'mixins/two-way';
+
   export default {
-    name: 'filters'
+    name: 'filters',
+    mixins: [TwoWay],
+    props: {
+      filters: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+    },
   };
 </script>
 
 <style lang="scss" scoped>
   .el-input {
-    width: 200px;
+    width: 180px;
   }
 
   .row {
