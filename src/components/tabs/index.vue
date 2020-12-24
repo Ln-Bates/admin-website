@@ -1,8 +1,11 @@
 <template>
   <el-radio-group v-model="val" class="tabs">
-    <el-radio-button label="1">全部</el-radio-button>
-    <el-radio-button label="2">上架</el-radio-button>
-    <el-radio-button label="3">下架</el-radio-button>
+    <el-radio-button
+      v-for="item in tabs"
+      :label="item.value"
+      :key="item.value">
+      {{item.label}}
+    </el-radio-button>
   </el-radio-group>
 </template>
 
@@ -11,7 +14,18 @@
 
   export default {
     name: 'tabs',
-    mixins: [TwoWay]
+    props: {
+      tabs: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+    },
+    mixins: [TwoWay],
+    mounted() {
+      console.log(this.tabs);
+    }
   };
 </script>
 

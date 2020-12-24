@@ -35,7 +35,11 @@
           if (children) {
             children.forEach(child => {
               if (child.path[0] !== '/') {
-                child.path = `${item.path}/${child.path}`;
+                let path = `${item.path}/${child.path}`;
+                if (child.path === '') {
+                  path = item.path;
+                }
+                child.path = path;
               }
               if (child.children) {
                 this.setRoutes(children);

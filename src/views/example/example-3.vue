@@ -2,7 +2,6 @@
   <table-view
     v-bind="{ total, tableData, tableOptions, tabs, filters }"
     v-model="model"
-    :custom-loading="loading"
     @get-data="getData"
   >
     <template #slot-left>
@@ -41,7 +40,7 @@
         tableData,
         tabs: [
           {label: '全部', value: 1},
-          {label: '上家', value: 2},
+          {label: '上架', value: 2},
           {label: '下架', value: 3},
         ],
         filters: [
@@ -57,13 +56,12 @@
     methods: {
       getData({page, size}, cb) {
         console.log('get data', page, size);
-        this.loading = true;
+        console.log(this.model.filter);
         setTimeout(() => {
-          this.loading = false;
           cb();
-        }, 2000);
-      }
-    }
+        }, 1000);
+      },
+    },
   };
 </script>
 

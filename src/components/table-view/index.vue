@@ -8,7 +8,7 @@
       <!-- 按钮组 -->
       <div class="btn-group component-container">
         <div class="left">
-          <tabs v-model="val.tabActive"/>
+          <tabs :tabs="tabs" v-model="val.tabActive"/>
           <slot name="slot-left"/>
         </div>
         <div class="right">
