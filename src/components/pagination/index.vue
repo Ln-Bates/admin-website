@@ -2,6 +2,7 @@
   <el-pagination
     background
     :page-sizes="PAGE_SIZES"
+    :current-page="pageData.page"
     :layout="layout"
     :total="total"
     :hide-on-single-page="true"
@@ -19,7 +20,16 @@
     props: {
       total: {
         type: Number,
-        default: 20
+        default: 0
+      },
+      pageData: {
+        type: Object,
+        default() {
+          return {
+            page: 1,
+            size: PAGE_SIZES[0]
+          };
+        }
       },
     },
     data() {
