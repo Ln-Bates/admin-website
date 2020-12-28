@@ -2,6 +2,8 @@ const RouterContainer = () => import('components/router-container/index.vue');
 const Example1 = () => import(/* webpackChunkName: "modules/views/example/example-1" */ 'views/example/example-1.vue');
 const Example2 = () => import(/* webpackChunkName: "modules/views/example/example-2" */ 'views/example/example-2.vue');
 const Example3 = () => import(/* webpackChunkName: "modules/views/example/example-3" */ 'views/example/example-3.vue');
+const Example4 = () => import(/* webpackChunkName: "modules/views/example/example-4" */ 'views/example/example-4.vue');
+const Example5 = () => import(/* webpackChunkName: "modules/views/example/example-5" */ 'views/example/example-5.vue');
 
 export default [
   {
@@ -34,6 +36,22 @@ export default [
         component: Example3,
         meta: {
           title: '视图组件 - 表格'
+        }
+      },
+      {
+        path: 'form-example',
+        name: 'form-example',
+        component: Example4,
+        meta: {
+          title: '视图组件 - 表单'
+        }
+      },
+      {
+        path: 'form-container',
+        name: 'form-container',
+        component: Example5,
+        meta: {
+          title: '视图组件 - 表单容器'
         }
       },
     ]
