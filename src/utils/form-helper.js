@@ -31,22 +31,22 @@ export const formHelper = {
   },
   switch(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('switch', label, prop, disabled)
+      ...defaultConstruction('form-switch', label, prop, disabled)
     };
   },
   radio(label, prop, disabled = false, options) {
     return {
-      ...groupConstruction('radio', label, prop, disabled, options)
+      ...groupConstruction('form-radio', label, prop, disabled, options)
     };
   },
   checkbox(label, prop, disabled = false, options) {
     return {
-      ...groupConstruction('checkbox', label, prop, disabled, options)
+      ...groupConstruction('form-checkbox', label, prop, disabled, options)
     };
   },
   select(label, prop, disabled = false, options) {
     return {
-      ...groupConstruction('select', label, prop, disabled, options)
+      ...groupConstruction('form-select-default', label, prop, disabled, options)
     };
   },
 };

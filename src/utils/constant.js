@@ -8,3 +8,5 @@ export const PAGE_SIZES = [10, 15, 20];
 export const KEY = 'label';
 // 组件中通用value
 export const VALUE = 'value';
+// 一天多少毫秒
+export const MS_TO_DAY = 3600 * 1000 * 24;

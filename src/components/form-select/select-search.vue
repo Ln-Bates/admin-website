@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: 'form-input-search'
+        name: 'form-select-search'
     };
 </script>
 

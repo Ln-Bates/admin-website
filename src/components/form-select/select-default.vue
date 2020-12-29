@@ -20,7 +20,7 @@
     import TwoWay from 'mixins/two-way';
 
     export default {
-        name: 'form-select',
+        name: 'form-select-default',
         props: {
             options: {
                 type: Array,
