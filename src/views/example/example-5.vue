@@ -20,8 +20,13 @@
         data() {
             return {
                 formList: [
+                    formHelper.input('普通输入框', 's1', true),
+                    formHelper.inputFloat('浮点输入框', 's2', true),
+                    formHelper.inputInt('整数输入框', 's3', true),
+                    formHelper.inputPassword('密码输入框', 's4', true),
                     formHelper.datePicker('时间选择', 'a', true),
-                    formHelper.dateRange('时间区间', 'b', true),
+                    formHelper.datePicker('时间选择', 'a', true),
+                    formHelper.dateRange('时间区间', 'b'),
                     formHelper.radio('单选', 'c', false, options),
                     formHelper.checkbox('多选', 'd', false, options),
                     formHelper.select('下拉', 'e', false, options),

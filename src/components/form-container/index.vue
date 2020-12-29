@@ -58,10 +58,10 @@
     // import FormSelectSearch from 'components/form-select/select-search';
     import FormCheckbox from 'components/form-checkbox/index';
     import FormSwitch from 'components/form-switch/index';
-    // import FormInputDefault from 'components/form-input/input-default';
-    // import FormInputFloat from 'components/form-input/input-float';
-    // import FormInputInt from 'components/form-input/input-int';
-    // import FormInputPassword from 'components/form-input/input-password';
+    import FormInputDefault from 'components/form-input/input-default';
+    import FormInputFloat from 'components/form-input/input-float';
+    import FormInputInt from 'components/form-input/input-int';
+    import FormInputPassword from 'components/form-input/input-password';
     // import FormInputSearch from 'components/form-input/input-search';
     import TwoWay from 'mixins/two-way';
 
@@ -75,10 +75,10 @@
             // FormSelectSearch,
             FormCheckbox,
             FormSwitch,
-            // FormInputDefault,
-            // FormInputFloat,
-            // FormInputInt,
-            // FormInputPassword,
+            FormInputDefault,
+            FormInputFloat,
+            FormInputInt,
+            FormInputPassword,
             // FormInputSearch,
         },
         props: {

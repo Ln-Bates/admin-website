@@ -11,9 +11,9 @@ export function defaultConstruction(type, label, prop, disabled = false) {
   };
 }
 
-export function groupConstruction(type, options = [], ...arg) {
+export function groupConstruction(type, label, prop, disabled = false, options = []) {
   return {
-    ...defaultConstruction(type, ...arg),
+    ...defaultConstruction(type, label, prop, disabled),
     options
   };
 }
@@ -27,64 +27,64 @@ export const formHelper = {
    * @param {*} prop 表单属性
    * @param {*} disabled 禁用
    */
-  input(...arg) {
+  input(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('form-input-default', ...arg)
+      ...defaultConstruction('form-input-default', label, prop, disabled)
     }
   },
-  inputFloat(...arg) {
+  inputFloat(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('form-input-float', ...arg)
+      ...defaultConstruction('form-input-float', label, prop, disabled)
     }
   },
-  inputInt(...arg) {
+  inputInt(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('form-input-int', ...arg)
+      ...defaultConstruction('form-input-int', label, prop, disabled)
     }
   },
-  inputPassword(...arg) {
+  inputPassword(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('form-input-password', ...arg)
+      ...defaultConstruction('form-input-password', label, prop, disabled)
     }
   },
-  inputSearch(...arg) {
+  inputSearch(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('form-input-search', ...arg)
+      ...defaultConstruction('form-input-search', label, prop, disabled)
     }
   },
-  datePicker(...arg) {
+  datePicker(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('date-picker', ...arg)
+      ...defaultConstruction('date-picker', label, prop, disabled)
     };
   },
-  dateRange(...arg) {
+  dateRange(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('date-range', ...arg)
+      ...defaultConstruction('date-range', label, prop, disabled)
     };
   },
-  switch(...arg) {
+  switch(label, prop, disabled = false) {
     return {
-      ...defaultConstruction('form-switch', ...arg)
+      ...defaultConstruction('form-switch', label, prop, disabled)
     };
   },
-  radio(options, ...arg) {
+  radio(label, prop, disabled = false, options = []) {
     return {
-      ...groupConstruction('form-radio', options, ...arg)
+      ...groupConstruction('form-radio', label, prop, disabled, options)
     };
   },
-  checkbox(options, ...arg) {
+  checkbox(label, prop, disabled = false, options = []) {
     return {
-      ...groupConstruction('form-checkbox', options, ...arg)
+      ...groupConstruction('form-checkbox', label, prop, disabled, options)
     };
   },
-  select(options, ...arg) {
+  select(label, prop, disabled = false, options = []) {
     return {
-      ...groupConstruction('form-select-default', options, ...arg)
+      ...groupConstruction('form-select-default', label, prop, disabled, options)
     };
   },
-  selectSearch(options, ...arg) {
+  selectSearch(label, prop, disabled = false, options = []) {
     return {
-      ...groupConstruction('form-select-search', options, ...arg)
+      ...groupConstruction('form-select-search', label, prop, disabled, options)
     };
   },
 };
