@@ -5,48 +5,86 @@
  * @param {*} prop 表单属性
  * @param {*} disabled 禁用
  */
-function defaultConstruction(type, label, prop, disabled = false) {
+export function defaultConstruction(type, label, prop, disabled = false) {
   return {
     type, label, prop, disabled
   };
 }
 
-function groupConstruction(type, label, prop, disabled = false, options = []) {
+export function groupConstruction(type, options = [], ...arg) {
   return {
-    ...defaultConstruction(type, label, prop, disabled),
+    ...defaultConstruction(type, ...arg),
     options
   };
 }
 
 export const formHelper = {
-  datePicker(label, prop, disabled = false) {
+  /**
+   * arg为默认项每个表单都有
+   * @param  {...any} arg
+   * @param {*} type 类型
+   * @param {*} label 名称
+   * @param {*} prop 表单属性
+   * @param {*} disabled 禁用
+   */
+  input(...arg) {
     return {
-      ...defaultConstruction('date-picker', label, prop, disabled)
+      ...defaultConstruction('form-input-default', ...arg)
+    }
+  },
+  inputFloat(...arg) {
+    return {
+      ...defaultConstruction('form-input-float', ...arg)
+    }
+  },
+  inputInt(...arg) {
+    return {
+      ...defaultConstruction('form-input-int', ...arg)
+    }
+  },
+  inputPassword(...arg) {
+    return {
+      ...defaultConstruction('form-input-password', ...arg)
+    }
+  },
+  inputSearch(...arg) {
+    return {
+      ...defaultConstruction('form-input-search', ...arg)
+    }
+  },
+  datePicker(...arg) {
+    return {
+      ...defaultConstruction('date-picker', ...arg)
     };
   },
-  dateRange(label, prop, disabled = false) {
+  dateRange(...arg) {
     return {
-      ...defaultConstruction('date-range', label, prop, disabled)
+      ...defaultConstruction('date-range', ...arg)
     };
   },
-  switch(label, prop, disabled = false) {
+  switch(...arg) {
     return {
-      ...defaultConstruction('form-switch', label, prop, disabled)
+      ...defaultConstruction('form-switch', ...arg)
     };
   },
-  radio(label, prop, disabled = false, options) {
+  radio(options, ...arg) {
     return {
-      ...groupConstruction('form-radio', label, prop, disabled, options)
+      ...groupConstruction('form-radio', options, ...arg)
     };
   },
-  checkbox(label, prop, disabled = false, options) {
+  checkbox(options, ...arg) {
     return {
-      ...groupConstruction('form-checkbox', label, prop, disabled, options)
+      ...groupConstruction('form-checkbox', options, ...arg)
     };
   },
-  select(label, prop, disabled = false, options) {
+  select(options, ...arg) {
     return {
-      ...groupConstruction('form-select-default', label, prop, disabled, options)
+      ...groupConstruction('form-select-default', options, ...arg)
+    };
+  },
+  selectSearch(options, ...arg) {
+    return {
+      ...groupConstruction('form-select-search', options, ...arg)
     };
   },
 };
