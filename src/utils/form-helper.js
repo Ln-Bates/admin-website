@@ -7,6 +7,7 @@
  * @param {*} custom 自定义
  */
 export function defaultConstruction(type, label, prop, disabled = false, custom) {
+  // todo custom unused
   return {
     type, label, prop, disabled, custom
   };
