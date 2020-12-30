@@ -3,9 +3,9 @@
  * @param {*} type 类型
  * @param {*} label 表头
  * @param {*} prop 列属性
- * @param {*} question 提示
+ * @param {*} span 宽度 24格
  */
-function defaultConstruction(type, label, prop, span) {
+function defaultConstruction(type, label, prop, span = undefined) {
   if (!prop) throw new Error('Prop为必填项');
   return {
     type, label, prop, span
@@ -19,7 +19,7 @@ export const detailHelper = {
    * @param {*} prop
    * @param {*} span
    */
-  default(label, prop, span) {
+  default(label, prop, span = undefined) {
     return defaultConstruction('default', label, prop, span);
   },
   /**
@@ -28,7 +28,7 @@ export const detailHelper = {
    * @param {*} prop
    * @param {*} span
    */
-  image(label, prop, span) {
+  image(label, prop, span = undefined) {
     return defaultConstruction('image', label, prop, span);
   },
   /**
@@ -37,7 +37,7 @@ export const detailHelper = {
    * @param {*} prop
    * @param {*} span
    */
-  slot(label, prop, span) {
+  slot(label, prop, span = undefined) {
     return defaultConstruction('slot', label, prop, span);
   },
 };
