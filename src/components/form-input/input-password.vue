@@ -1,5 +1,6 @@
 <template>
-    <el-input v-model="val"></el-input>
+    <el-input v-model="val"
+              :disabled="disabled === true"></el-input>
 </template>
 
 <script>

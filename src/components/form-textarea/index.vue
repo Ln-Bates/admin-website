@@ -1,5 +1,6 @@
 <template>
     <el-input v-model="val"
+              :disabled="disabled === true"
               type="textarea"></el-input>
 </template>
 
