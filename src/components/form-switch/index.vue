@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import TwoWay from 'mixins/two-way';
+    import FormCommonProps from 'mixins/form-common-props';
 
     export default {
         name: 'form-switch',
@@ -19,12 +19,8 @@
                 type: [Boolean, String, Number],
                 default: false
             },
-            disabled: {
-                type: Boolean,
-                default: false
-            },
         },
-        mixins: [TwoWay],
+        mixins: [FormCommonProps],
         methods: {
             handleChange(val) {
                 this.$emit('changed', val);

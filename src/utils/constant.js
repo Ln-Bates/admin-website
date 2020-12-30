@@ -10,3 +10,5 @@ export const KEY = 'label';
 export const VALUE = 'value';
 // 一天多少毫秒
 export const MS_TO_DAY = 3600 * 1000 * 24;
+// 为空时默认显示的占位符
+export const EMPTY_PLACEHOLDER = '--';

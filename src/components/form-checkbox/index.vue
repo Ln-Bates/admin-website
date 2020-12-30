@@ -29,10 +29,6 @@
                 type: String,
                 default: 'value'
             },
-            disabled: {
-                type: Boolean,
-                default: false
-            }
         },
         mixins: [FormCommonProps],
         methods: {

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import TwoWay from 'mixins/two-way';
+    import FormCommonProps from 'mixins/form-common-props';
 
     export default {
         name: 'form-radio',
@@ -35,12 +35,8 @@
                 type: String,
                 default: 'value'
             },
-            disabled: {
-                type: Boolean,
-                default: false
-            }
         },
-        mixins: [TwoWay],
+        mixins: [FormCommonProps],
         methods: {
             handleChange(val) {
                 this.$emit('changed', val);

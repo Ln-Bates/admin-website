@@ -1,14 +1,18 @@
 <template>
     <simple-view>
-        <el-form>
+        <el-form :label-position="labelPosition"
+                 :label-width="labelWidth">
             <template v-for="item in formList">
-                <el-form-item v-if="item.hide !== true && item.type !== 'slot'"
-                              :label="item.label"
-                              :key="item.prop">
-                    <component v-model="val[item.prop]"
-                               v-bind="dynamicProp(item)"
-                               :is="item.type"></component>
-                    <!-- <template v-if="isSomeType(item, 'date-picker')">
+                <template v-if="item.hide !== true">
+                    <el-form-item v-if="itemType(item).isComponent"
+                                  :key="item.prop">
+                        <template v-slot:label>
+                            <form-label :item="item" />
+                        </template>
+                        <component v-model="val[item.prop]"
+                                   v-bind="dynamicProp(item)"
+                                   :is="item.type"></component>
+                        <!-- <template v-if="isSomeType(item, 'date-picker')">
                         <date-picker v-model="val[item.prop]"
                                      :disabled="item.disabled" />
                     </template>
@@ -35,12 +39,22 @@
                         <form-switch v-model="val[item.prop]"
                                      :disabled="item.disabled" />
                     </template> -->
-                </el-form-item>
-                <el-form-item v-else-if="item.type === 'slot'"
-                              :label="item.label"
-                              :key="item.prop">
-                    插槽占位
-                </el-form-item>
+                    </el-form-item>
+                    <el-form-item v-else-if="itemType(item).isJustText"
+                                  :key="item.prop">
+                        <template v-slot:label>
+                            <form-label :item="item" />
+                        </template>
+                        {{text(item)}}
+                    </el-form-item>
+                    <el-form-item v-else-if="itemType(item).isSlot"
+                                  :key="item.prop">
+                        <template v-slot:label>
+                            <form-label :item="item" />
+                        </template>
+                        <slot :name="item.prop" />
+                    </el-form-item>
+                </template>
             </template>
         </el-form>
         <template #footer-bar>
@@ -63,7 +77,9 @@
     import FormInputInt from 'components/form-input/input-int';
     import FormInputPassword from 'components/form-input/input-password';
     // import FormInputSearch from 'components/form-input/input-search';
+    import FormLabel from './label';
     import TwoWay from 'mixins/two-way';
+    import { EMPTY_PLACEHOLDER } from 'utils/constant';
 
     export default {
         name: 'form-container',
@@ -80,6 +96,7 @@
             FormInputInt,
             FormInputPassword,
             // FormInputSearch,
+            FormLabel
         },
         props: {
             formList: {
@@ -88,6 +105,14 @@
                     return [];
                 }
             },
+            labelPosition: {
+                type: String,
+                default: 'right'
+            },
+            labelWidth: {
+                type: String,
+                default: 'auto'
+            }
         },
         mixins: [TwoWay],
         methods: {
@@ -120,6 +145,24 @@
                     ...commmonProps,
                     ...propsMap[type]
                 };
+            },
+            itemType(item) {
+                const notComponent = ['show', 'slot'];
+                const isType = type => {
+                    return item.type === type;
+                }
+                return {
+                    isComponent: !notComponent.includes(item.type),
+                    isJustText: isType('show'),
+                    isSlot: isType('slot')
+                }
+            },
+            text(item) {
+                let text = this.val[item.prop];
+                if (!text && text !== 0) {
+                    text = EMPTY_PLACEHOLDER;
+                }
+                return text;
             }
         },
     };

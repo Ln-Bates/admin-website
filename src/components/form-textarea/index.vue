@@ -1,17 +1,17 @@
 <template>
-  <el-input v-model="val" type="textarea"></el-input>
+    <el-input v-model="val"
+              type="textarea"></el-input>
 </template>
 
 <script>
-  import TwoWay from 'mixins/two-way';
+    import FormCommonProps from 'mixins/form-common-props';
 
-  export default {
-    name: 'form-textarea',
-    mixins: [TwoWay],
-  };
+    export default {
+        name: 'form-textarea',
+        mixins: [FormCommonProps],
+    };
 </script>
 
 <style scoped>
-
 </style>
 

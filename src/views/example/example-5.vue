@@ -1,6 +1,10 @@
 <template>
     <form-container v-model="formModel"
-                    :form-list="formList"></form-container>
+                    :form-list="formList">
+        <template v-slot:slot>
+            插槽测试~~
+        </template>
+    </form-container>
 </template>
 
 <script>
@@ -25,12 +29,13 @@
                     formHelper.inputInt('整数输入框', 's3', true),
                     formHelper.inputPassword('密码输入框', 's4', true),
                     formHelper.datePicker('时间选择', 'a', true),
-                    formHelper.datePicker('时间选择', 'a', true),
                     formHelper.dateRange('时间区间', 'b'),
                     formHelper.radio('单选', 'c', false, options),
                     formHelper.checkbox('多选', 'd', false, options),
                     formHelper.select('下拉', 'e', false, options),
                     { type: 'form-switch', prop: 'f', label: '开关', disabled: true },
+                    { type: 'show', prop: 'show', label: '显示测试' },
+                    { type: 'slot', prop: 'slot', label: '插槽测试', question: '测试提示文案' }
                 ],
                 formModel: {
                     a: '',
@@ -38,7 +43,8 @@
                     c: '',
                     d: [],
                     e: '',
-                    f: true
+                    f: true,
+                    show: '纯文本显示'
                 },
                 activeName: '1',
                 options: [

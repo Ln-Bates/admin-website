@@ -10,17 +10,13 @@
 </template>
 
 <script>
-    import TwoWay from 'mixins/two-way';
+    import FormCommonProps from 'mixins/form-common-props';
 
     import { MS_TO_DAY } from 'utils/constant';
     export default {
         name: 'date-picker',
-        mixins: [TwoWay],
+        mixins: [FormCommonProps],
         props: {
-            disabled: {
-                type: Boolean,
-                default: false
-            },
             hasOptions: {
                 type: Boolean,
                 default: false

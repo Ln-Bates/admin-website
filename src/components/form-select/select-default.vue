@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import TwoWay from 'mixins/two-way';
+    import FormCommonProps from 'mixins/form-common-props';
 
     export default {
         name: 'form-select-default',
@@ -44,10 +44,6 @@
                 type: Boolean,
                 default: false
             },
-            disabled: {
-                type: Boolean,
-                default: false
-            },
             clearable: {
                 type: Boolean,
                 default: true
@@ -57,7 +53,7 @@
                 default: 0
             }
         },
-        mixins: [TwoWay],
+        mixins: [FormCommonProps],
         methods: {
             handleChange(val) {
                 this.$emit('changed', val);

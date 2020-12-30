@@ -3,11 +3,11 @@
 </template>
 
 <script>
-    import TwoWay from 'mixins/two-way';
+    import FormCommonProps from 'mixins/form-common-props';
 
     export default {
         name: 'form-input-default',
-        mixins: [TwoWay],
+        mixins: [FormCommonProps],
     };
 </script>
 

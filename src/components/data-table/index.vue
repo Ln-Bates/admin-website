@@ -8,13 +8,8 @@
                              :key="index">
                 <template v-slot:header>
                     {{column.label}}
-                    <el-tooltip v-if="column.question"
-                                class="item"
-                                effect="dark"
-                                :content="column.question"
-                                placement="right">
-                        <i class="el-icon-question"></i>
-                    </el-tooltip>
+                    <question v-if="column.question"
+                              :content="column.question" />
                 </template>
                 <template v-slot:default="{row, $index}">
                     <template v-if="!column.type || column.type === 'default'">
