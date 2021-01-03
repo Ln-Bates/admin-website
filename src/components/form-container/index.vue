@@ -12,9 +12,12 @@
             <template v-slot:label>
               <form-label :item="item"/>
             </template>
-            <component v-model="val[item.prop]"
-                       v-bind="dynamicProp(item)"
-                       :is="item.type"></component>
+            <keep-alive>
+              <component
+                v-model="val[item.prop]"
+                v-bind="dynamicProp(item)"
+                :is="item.type"></component>
+            </keep-alive>
           </el-form-item>
           <el-form-item v-else-if="itemType(item).isJustText"
                         :key="item.prop">
@@ -160,11 +163,12 @@
        */
       itemType(item) {
         const notComponent = ['show', 'slot'];
+        const show = item.show !== false;
         const isType = type => {
-          return item.type === type;
+          return item.type === type && show;
         };
         return {
-          isComponent: !notComponent.includes(item.type),
+          isComponent: !notComponent.includes(item.type) && show,
           isJustText: isType('show'),
           isSlot: isType('slot')
         };

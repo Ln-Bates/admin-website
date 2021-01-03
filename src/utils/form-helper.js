@@ -4,87 +4,74 @@
  * @param {*} label 名称
  * @param {*} prop 表单属性
  * @param {*} disabled 禁用
+ * @param show 是否渲染
  * @param {*} config 自定义
  */
-export function defaultConstruction(type, label, prop, disabled = false, config) {
+export function defaultConstruction(type, label, prop, disabled = false, show = true, config) {
   return {
-    type, label, prop, disabled, config
+    type, label, prop, disabled, show, config
   };
 }
 
-export function groupConstruction(type, label, prop, disabled = false, options = [], config = {}) {
+export function groupConstruction(type, label, prop, disabled = false, show = true, options = [], config = {}) {
+  let args = [
+    type, label, prop, disabled, show, config
+  ];
+  if (typeof show === 'object') {
+    args = [
+      type, label, prop, disabled, true, {options: show}
+    ];
+  }
   return {
-    ...defaultConstruction(type, label, prop, disabled, config),
+    ...defaultConstruction.apply(this, args),
     options
   };
 }
 
+/* eslint-disable */
 const formHelper = {
   /**
    * @param {*} label 名称
    * @param {*} prop 表单属性
    * @param {*} disabled 禁用
+   * @param show
    * @param config
    */
-  input(label, prop, disabled = false, config = {placeholder: '请输入'}) {
-    return {
-      ...defaultConstruction('form-input-default', label, prop, disabled, config)
-    };
+  input(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+    return defaultConstruction.apply(this, ['form-input-default', ...arguments]);
   },
-  inputFloat(label, prop, disabled = false, config = {placeholder: '请输入'}) {
-    return {
-      ...defaultConstruction('form-input-float', label, prop, disabled, config)
-    };
+  inputFloat(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+    return defaultConstruction.apply(this, ['form-input-float', ...arguments]);
   },
-  inputInt(label, prop, disabled = false, config = {placeholder: '请输入'}) {
-    return {
-      ...defaultConstruction('form-input-int', label, prop, disabled, config)
-    };
+  inputInt(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+    return defaultConstruction.apply(this, ['form-input-int', ...arguments]);
   },
-  inputPassword(label, prop, disabled = false, config = {placeholder: '请输入'}) {
-    return {
-      ...defaultConstruction('form-input-password', label, prop, disabled, config)
-    };
+  inputPassword(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+    return defaultConstruction.apply(this, ['form-input-password', ...arguments]);
   },
-  inputSearch(label, prop, disabled = false, config = {placeholder: '请输入'}) {
-    return {
-      ...defaultConstruction('form-input-search', label, prop, disabled, config)
-    };
+  inputSearch(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+    return defaultConstruction.apply(this, ['form-input-search', ...arguments]);
   },
-  datePicker(label, prop, disabled = false, config = {}) {
-    return {
-      ...defaultConstruction('date-picker', label, prop, disabled, config)
-    };
+  datePicker(label, prop, disabled = false, show = true, config = {}) {
+    return defaultConstruction.apply(this, ['date-picker', ...arguments]);
   },
-  dateRange(label, prop, disabled = false, config = {}) {
-    return {
-      ...defaultConstruction('date-range', label, prop, disabled, config)
-    };
+  dateRange(label, prop, disabled = false, show = true, config = {}) {
+    return defaultConstruction.apply(this, ['date-range', ...arguments]);
   },
-  switch(label, prop, disabled = false, config = {}) {
-    return {
-      ...defaultConstruction('form-switch', label, prop, disabled, config)
-    };
+  switch(label, prop, disabled = false, show = true, config = {}) {
+    return defaultConstruction.apply(this, ['form-switch', ...arguments]);
   },
-  radio(label, prop, disabled = false, options = [], config = {}) {
-    return {
-      ...groupConstruction('form-radio', label, prop, disabled, options, config)
-    };
+  radio(label, prop, disabled = false, show = true, options = [], config = {}) {
+    return groupConstruction.apply(this, ['form-radio', ...arguments]);
   },
-  checkbox(label, prop, disabled = false, options = [], config = {}) {
-    return {
-      ...groupConstruction('form-checkbox', label, prop, disabled, options, config)
-    };
+  checkbox(label, prop, disabled = false, show = true, options = [], config = {}) {
+    return groupConstruction.apply(this, ['form-checkbox', ...arguments]);
   },
-  select(label, prop, disabled = false, options = [], config = {}) {
-    return {
-      ...groupConstruction('form-select-default', label, prop, disabled, options, config)
-    };
+  select(label, prop, disabled = false, show = true, options = [], config = {}) {
+    return groupConstruction.apply(this, ['form-select-default', ...arguments]);
   },
-  selectSearch(label, prop, disabled = false, options = [], config = {}) {
-    return {
-      ...groupConstruction('form-select-search', label, prop, disabled, options, config)
-    };
+  selectSearch(label, prop, disabled = false, show = true, options = [], config = {}) {
+    return groupConstruction.apply(this, ['form-select-search', ...arguments]);
   },
 };
 
