@@ -1,7 +1,10 @@
 <template>
   <simple-view>
-    <el-form :label-position="labelPosition"
-             :label-width="labelWidth">
+    <el-form v-loading="loading"
+             :label-position="labelPosition"
+             :label-width="labelWidth"
+             class="form"
+    >
       <template v-for="item in formList">
         <template v-if="item.hide !== true">
           <el-form-item v-if="itemType(item).isComponent"
@@ -31,8 +34,22 @@
       </template>
     </el-form>
     <template #footer-bar>
-      <el-button>底部按钮</el-button>
-      <el-button type="primary">底部按钮</el-button>
+      <el-button
+        v-if="submitHandler"
+        :disabled="loading"
+        @click="$router.back()"
+      >
+        {{cancelText}}
+      </el-button>
+      <el-button
+        v-if="submitHandler"
+        :loading="loading"
+        @click="submitHandlerConfirm"
+        type="primary"
+      >
+        {{confirmText}}
+      </el-button>
+      <slot name="footer-bar"></slot>
     </template>
   </simple-view>
 </template>
@@ -85,13 +102,32 @@
       labelWidth: {
         type: String,
         default: 'auto'
-      }
+      },
+      submitHandler: {
+        type: Function,
+        default: undefined
+      },
+      confirmText: {
+        type: String,
+        default: '确认'
+      },
+      cancelText: {
+        type: String,
+        default: '取消'
+      },
     },
     mixins: [TwoWay],
+    data() {
+      return {
+        loading: false
+      };
+    },
     methods: {
-      isSomeType(item, type) {
-        return item.type === type && item.hide !== true;
-      },
+      /**
+       * 动态组合属性
+       * @param item
+       * @return {{disabled}}
+       */
       dynamicProp(item) {
         const {type, disabled} = item;
         const commonProps = {
@@ -117,6 +153,11 @@
           ...item.config
         };
       },
+      /**
+       * 表单类型
+       * @param item
+       * @return {{isSlot: *, isJustText: *, isComponent: boolean}}
+       */
       itemType(item) {
         const notComponent = ['show', 'slot'];
         const isType = type => {
@@ -128,16 +169,35 @@
           isSlot: isType('slot')
         };
       },
+      /**
+       * 文案处理
+       * @param item
+       * @return {*}
+       */
       text(item) {
         let text = this.val[item.prop];
         if (!text && text !== 0) {
           text = EMPTY_PLACEHOLDER;
         }
         return text;
+      },
+      /**
+       * 提交方法
+       */
+      submitHandlerConfirm() {
+        if (this.submitHandler) {
+          this.loading = true;
+          this.submitHandler().finally(() => {
+            this.loading = false;
+          });
+        }
       }
     },
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .form {
+    height: 100%;
+  }
 </style>

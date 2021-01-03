@@ -22,10 +22,7 @@
         }
       },
     },
-    mixins: [TwoWay],
-    mounted() {
-      console.log(this.tabs);
-    }
+    mixins: [TwoWay]
   };
 </script>
 

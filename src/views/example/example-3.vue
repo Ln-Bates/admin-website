@@ -1,5 +1,5 @@
 <template>
-  <table-view v-bind="{ total, tableData, tableOptions, tabs, filters }"
+  <table-view v-bind="tableProps"
               v-model="model"
               @get-data="getData">
     <template #slot-left>
@@ -20,10 +20,23 @@
 
 <script>
   import {tableHelper} from 'utils/table-helper';
+  import filterHelper from 'utils/filter-helper';
   import setDictionary from 'utils/set-dictionary';
 
   export default {
     name: 'example-3',
+    computed: {
+      tableProps() {
+        const {total, tableData, tableOptions, tabs, filters} = this;
+        return {
+          total,
+          tableOptions,
+          tableData,
+          tabs,
+          filters
+        };
+      }
+    },
     data() {
       const tableData = new Array(10);
       tableData.fill({
@@ -67,10 +80,20 @@
           setDictionary('上架', 2),
           setDictionary('下架', 3),
         ],
-        filters: [
-          {type: 'input', label: '姓名', prop: 'name'},
-          {type: 'input', label: '类型', prop: 'type'},
-        ],
+        filters: {
+          list: [
+            filterHelper.input('输入框', 'name'),
+            filterHelper.int('整数', 'int'),
+            filterHelper.float('浮点', 'float'),
+            filterHelper.datePicker('时间选择', 'datePicker'),
+            filterHelper.dateRange('时间区间', 'dateRange'),
+            filterHelper.select('下拉', 'select', [
+              setDictionary('测试1', 1),
+              setDictionary('测试2', 2),
+              setDictionary('测试3', 3),
+            ]),
+          ]
+        },
         model: {
           filter: {},
           tabActive: 1

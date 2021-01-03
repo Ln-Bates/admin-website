@@ -1,6 +1,6 @@
 <template>
   <drawer v-model="val"
-          :handle-click="handleClick"
+          :handle-click="submitHandler"
           :size="size"
           :title="title"
           class="drawer-detail">
@@ -27,7 +27,7 @@
         type: [String, Number],
         default: '50%'
       },
-      handleClick: {
+      submitHandler: {
         type: [Function],
         default: undefined
       },

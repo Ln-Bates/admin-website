@@ -7,8 +7,8 @@
       <slot></slot>
     </div>
     <template v-slot:footer>
-      <el-button v-if="handleClick" @click="val = false">取消</el-button>
-      <el-button v-if="handleClick" :loading="btnLoading" type="primary" @click="handleClickConfirm">
+      <el-button v-if="submitHandler" @click="val = false">取消</el-button>
+      <el-button v-if="submitHandler" :loading="btnLoading" type="primary" @click="submitHandlerConfirm">
         确认
       </el-button>
       <slot name="footer"></slot>
@@ -31,7 +31,7 @@
         type: String,
         default: '50%'
       },
-      handleClick: {
+      submitHandler: {
         type: Function,
         default: undefined
       },
@@ -42,9 +42,9 @@
       };
     },
     methods: {
-      handleClickConfirm() {
+      submitHandlerConfirm() {
         this.btnLoading = true;
-        this.handleClick().finally(() => {
+        this.submitHandler().finally(() => {
           this.btnLoading = false;
           this.val = false;
         });

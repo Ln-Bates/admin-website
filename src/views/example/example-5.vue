@@ -1,6 +1,6 @@
 <template>
   <form-container v-model="formModel"
-                  :form-list="formList">
+                  :form-list="formList" :submit-handler="submitHandler">
     <template v-slot:slot>
       插槽测试~~
     </template>
@@ -55,6 +55,15 @@
           {label: '选项3', value: 3},
         ],
       };
+    },
+    methods: {
+      submitHandler() {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+          }, 1000);
+        });
+      }
     },
   };
 </script>

@@ -8,7 +8,7 @@
     <div v-loading="loading" class="content">
       <slot/>
       <div class="drawer-footer">
-        <el-button v-if="handleClick" type="primary" @click="close">保存</el-button>
+        <el-button v-if="submitHandler" type="primary" @click="close">保存</el-button>
         <slot name="footer"></slot>
       </div>
     </div>
@@ -28,7 +28,7 @@
         type: [String, Number],
         default: '50%'
       },
-      handleClick: {
+      submitHandler: {
         type: [Function],
         default: undefined
       },
@@ -41,9 +41,9 @@
     },
     methods: {
       close() {
-        if (this.handleClick) {
+        if (this.submitHandler) {
           this.loading = true;
-          this.handleClick().finally(() => {
+          this.submitHandler().finally(() => {
             this.loading = false;
             this.val = false;
           });
