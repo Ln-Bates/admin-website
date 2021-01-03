@@ -7,7 +7,6 @@
  * @param {*} config 自定义
  */
 export function defaultConstruction(type, label, prop, disabled = false, config) {
-  // todo config unused
   return {
     type, label, prop, disabled, config
   };
@@ -20,34 +19,34 @@ export function groupConstruction(type, label, prop, disabled = false, options =
   };
 }
 
-export const formHelper = {
+const formHelper = {
   /**
    * @param {*} label 名称
    * @param {*} prop 表单属性
    * @param {*} disabled 禁用
    * @param config
    */
-  input(label, prop, disabled = false, config = { placeholder: '请输入' }) {
+  input(label, prop, disabled = false, config = {placeholder: '请输入'}) {
     return {
       ...defaultConstruction('form-input-default', label, prop, disabled, config)
     };
   },
-  inputFloat(label, prop, disabled = false, config = { placeholder: '请输入' }) {
+  inputFloat(label, prop, disabled = false, config = {placeholder: '请输入'}) {
     return {
       ...defaultConstruction('form-input-float', label, prop, disabled, config)
     };
   },
-  inputInt(label, prop, disabled = false, config = { placeholder: '请输入' }) {
+  inputInt(label, prop, disabled = false, config = {placeholder: '请输入'}) {
     return {
       ...defaultConstruction('form-input-int', label, prop, disabled, config)
     };
   },
-  inputPassword(label, prop, disabled = false, config = { placeholder: '请输入' }) {
+  inputPassword(label, prop, disabled = false, config = {placeholder: '请输入'}) {
     return {
       ...defaultConstruction('form-input-password', label, prop, disabled, config)
     };
   },
-  inputSearch(label, prop, disabled = false, config = { placeholder: '请输入' }) {
+  inputSearch(label, prop, disabled = false, config = {placeholder: '请输入'}) {
     return {
       ...defaultConstruction('form-input-search', label, prop, disabled, config)
     };
@@ -88,3 +87,5 @@ export const formHelper = {
     };
   },
 };
+
+export default formHelper;
