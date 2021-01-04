@@ -1,4 +1,4 @@
-import {PREPOSITION, CONFIRM_BUTTON_TEXT} from 'utils/constant';
+import { PREPOSITION, CONFIRM_BUTTON_TEXT } from 'utils/constant';
 
 const confirm = {
   install(Vue) {

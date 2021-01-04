@@ -1,4 +1,4 @@
-import {KEY, VALUE} from './constant.js';
+import { KEY, VALUE } from './constant.js';
 
 export default function (key, val, disabled = false) {
   return {

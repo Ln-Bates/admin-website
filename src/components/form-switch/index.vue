@@ -1,32 +1,34 @@
 <template>
-    <el-switch v-model="val"
-               @change="handleChange"
-               :disabled="disabled">
-    </el-switch>
+	<el-switch
+		v-model="val"
+		:disabled="disabled"
+		@change="handleChange"
+	>
+	</el-switch>
 </template>
 
 <script>
-    import FormCommonProps from 'mixins/form-common-props';
+	import FormCommonProps from 'mixins/form-common-props';
 
-    export default {
-        name: 'form-switch',
-        props: {
-            activeActive: {
-                type: [Boolean, String, Number],
-                default: true
-            },
-            inactiveActive: {
-                type: [Boolean, String, Number],
-                default: false
-            },
-        },
-        mixins: [FormCommonProps],
-        methods: {
-            handleChange(val) {
-                this.$emit('changed', val);
-            }
-        }
-    }
+	export default {
+		name: 'form-switch',
+		props: {
+			activeActive: {
+				type: [Boolean, String, Number],
+				default: true
+			},
+			inactiveActive: {
+				type: [Boolean, String, Number],
+				default: false
+			}
+		},
+		mixins: [FormCommonProps],
+		methods: {
+			handleChange(val) {
+				this.$emit('changed', val);
+			}
+		}
+	};
 </script>
 
 <style>

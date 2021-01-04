@@ -19,7 +19,7 @@ export function groupConstruction(type, label, prop, disabled = false, show = tr
   ];
   if (typeof show === 'object') {
     args = [
-      type, label, prop, disabled, true, {options: show}
+      type, label, prop, disabled, true, { options: show }
     ];
   }
   return {
@@ -37,19 +37,19 @@ const formHelper = {
    * @param show
    * @param config
    */
-  input(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+  input(label, prop, disabled = false, show = true, config = { placeholder: '请输入' }) {
     return defaultConstruction.apply(this, ['form-input-default', ...arguments]);
   },
-  inputFloat(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+  inputFloat(label, prop, disabled = false, show = true, config = { placeholder: '请输入' }) {
     return defaultConstruction.apply(this, ['form-input-float', ...arguments]);
   },
-  inputInt(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+  inputInt(label, prop, disabled = false, show = true, config = { placeholder: '请输入' }) {
     return defaultConstruction.apply(this, ['form-input-int', ...arguments]);
   },
-  inputPassword(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+  inputPassword(label, prop, disabled = false, show = true, config = { placeholder: '请输入' }) {
     return defaultConstruction.apply(this, ['form-input-password', ...arguments]);
   },
-  inputSearch(label, prop, disabled = false, show = true, config = {placeholder: '请输入'}) {
+  inputSearch(label, prop, disabled = false, show = true, config = { placeholder: '请输入' }) {
     return defaultConstruction.apply(this, ['form-input-search', ...arguments]);
   },
   datePicker(label, prop, disabled = false, show = true, config = {}) {

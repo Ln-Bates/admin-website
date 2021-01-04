@@ -1,11 +1,11 @@
 <template>
-    <div class="search">search</div>
+	<div class="search">search</div>
 </template>
 
 <script>
-    export default {
-        name: 'form-select-search'
-    };
+	export default {
+		name: 'form-select-search'
+	};
 </script>
 
 <style scoped>

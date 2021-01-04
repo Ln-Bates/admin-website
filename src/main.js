@@ -13,7 +13,7 @@ import 'plugins';
 // 注入全局指令
 import 'directives';
 
-Vue.use(ElementUI, {size: 'mini'});
+Vue.use(ElementUI, { size: 'mini' });
 
 Vue.config.productionTip = false;
 Vue.config.devtools = true;

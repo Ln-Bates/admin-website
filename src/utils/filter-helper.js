@@ -1,4 +1,4 @@
-import {defaultConstruction} from './form-helper';
+import { defaultConstruction } from './form-helper';
 
 const filterHelper = {
   input(label, prop) {
