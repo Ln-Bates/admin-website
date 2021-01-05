@@ -1,9 +1,11 @@
 import Vue from 'vue';
 
 import Confirm from './confirm';
+import Message from './message';
 
 const plugins = [
-  Confirm
+  Confirm,
+  Message
 ];
 
 plugins.forEach(plugin => Vue.use(plugin));

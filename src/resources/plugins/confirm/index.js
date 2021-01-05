@@ -1,6 +1,6 @@
 import { PREPOSITION, CONFIRM_BUTTON_TEXT } from 'utils/constant';
 
-const confirm = {
+const Confirm = {
   install(Vue) {
     Vue.prototype[`${PREPOSITION}Confirm`] = function (confirmMsg, confirmText = CONFIRM_BUTTON_TEXT) {
       let confirmButtonText = confirmText;
@@ -20,4 +20,4 @@ const confirm = {
   },
 };
 
-export default confirm;
+export default Confirm;

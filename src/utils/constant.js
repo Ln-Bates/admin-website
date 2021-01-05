@@ -12,3 +12,5 @@ export const VALUE = 'value';
 export const MS_TO_DAY = 3600 * 1000 * 24;
 // 为空时默认显示的占位符
 export const EMPTY_PLACEHOLDER = '--';
+// 操作成功提示
+export const SUCCESS_MESSAGE = '操作成功';
