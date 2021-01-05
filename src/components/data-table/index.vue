@@ -136,7 +136,7 @@
 		data() {
 			return {
 				multipleSelection: {},
-				$_unwatch: null
+				unwatch: null
 			};
 		},
 		methods: {
@@ -158,7 +158,6 @@
 				if (this.memory) {
 					// 避免和记忆触发冲突( 选中先后顺序冲突 )
 					setTimeout(() => {
-						const multipleSelection = this.multipleSelection;
 						const { multipleSelection, selectionKeyword } = this;
 						const prop = row[selectionKeyword];
 						if (multipleSelection[prop]) {
@@ -175,13 +174,15 @@
 			 */
 			handleSelectAll(selection) {
 				if (this.memory) {
-					const multipleSelection = this.multipleSelection;
 					const { multipleSelection, selectionKeyword } = this;
-					const prop = row[selectionKeyword];
+
 					if (selection.length) {
-						selection.forEach(row => (multipleSelection[prop] = row));
+						selection.forEach(
+							row => (multipleSelection[row[selectionKeyword]] = row)
+						);
 					} else {
 						this.tableData.forEach(row => {
+							const prop = row[selectionKeyword];
 							if (multipleSelection[prop]) {
 								delete multipleSelection[prop];
 							}
@@ -255,7 +256,7 @@
 				this.initSelection();
 				this.triggerSelect();
 				setTimeout(() => {
-					this.$_unwatch = this.$watch(
+					this.unwatch = this.$watch(
 						'tableData',
 						() => {
 							this.triggerSelect();
@@ -268,8 +269,8 @@
 			}
 		},
 		beforeDestroy() {
-			if (this.$_unwatch) {
-				this.$_unwatch();
+			if (this.unwatch) {
+				this.unwatch();
 			}
 		}
 	};
