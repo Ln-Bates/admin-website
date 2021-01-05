@@ -4,6 +4,8 @@
 			v-loading="loading"
 			:label-position="labelPosition"
 			:label-width="labelWidth"
+			:rules="rules"
+			ref="hook-form"
 			class="form"
 		>
 			<template v-for="item in formList">
@@ -11,6 +13,7 @@
 					<el-form-item
 						v-if="itemType(item).isComponent"
 						:key="item.prop"
+						:prop="item.prop"
 					>
 						<template v-slot:label>
 							<form-label :item="item" />
@@ -101,6 +104,12 @@
 		},
 		props: {
 			formList: {
+				type: Array,
+				default() {
+					return [];
+				}
+			},
+			rules: {
 				type: Array,
 				default() {
 					return [];
@@ -198,11 +207,32 @@
 			 */
 			submitHandlerConfirm() {
 				if (this.submitHandler) {
-					this.loading = true;
-					this.submitHandler().finally(() => {
-						this.loading = false;
-					});
+					const submitHandler = () => {
+						this.loading = true;
+						this.submitHandler().finally(() => {
+							this.loading = false;
+						});
+					};
+					if (this.rules.length) {
+						this.validate().then(() => {
+							submitHandler();
+						});
+					} else {
+						submitHandler();
+					}
 				}
+			},
+			validate() {
+				return this.$refs['hook-form'].validate();
+			},
+			validateField(prop) {
+				this.$refs['hook-form'].validateField(prop);
+			},
+			resetFields() {
+				this.$refs['hook-form'].resetFields();
+			},
+			clearValidate() {
+				this.$refs['hook-form'].clearValidate();
 			}
 		}
 	};
